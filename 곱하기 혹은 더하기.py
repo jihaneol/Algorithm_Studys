@@ -7,4 +7,5 @@ for i in range(1,len(n)):
     
     
 # 연습
+#연습2
 print(result)
