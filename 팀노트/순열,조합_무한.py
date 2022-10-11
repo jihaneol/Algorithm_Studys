@@ -17,4 +17,5 @@ c= math.comb(5,3)
 p = math.perm(5,3)
 math.factorial
 dist.pop()
+
 print(dist)
