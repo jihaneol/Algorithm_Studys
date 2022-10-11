@@ -12,7 +12,9 @@
 #     d+=d[0]*2 
 # print(d)
 d=[]
-for i in range(10):
-    d.append(i)
+
+b=["yayae"]
+
+d+=b
 
 print(d)
