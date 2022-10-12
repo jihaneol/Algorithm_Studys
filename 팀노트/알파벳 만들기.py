@@ -11,6 +11,8 @@ def solution(age):
     char_num = {str(i): chr(ord('a') + i) for i in range(26)}
     print(char_num)
     return ''.join([char_num[x] for x in str(age)])
+
 print(solution(23))
 print(chr(65))
 print(ord('a'))
+print(alpha_list)

@@ -7,6 +7,10 @@ string="sl"
 def solution(my_string, letter):
     return my_string.replace(letter, '')
 
+# 제외할 문자열 만들기
+def solution(my_string):
+    return "".join([i for i in my_string if not i in "aeiou"])
+
 print(solution(string,"l"))
 
 # 각도
@@ -18,3 +22,5 @@ def solution(n):
     return sum([i for i in range(2,n+1,2)])
 
 print(list(str(24)))
+
+# isdigit
