@@ -23,4 +23,12 @@ def solution(n):
 
 print(list(str(24)))
 
-# isdigit
+# isdigit 문자 숫자 확인
+
+# eval 함수는 "3*3" 이런식을 계산해줘 9를 내보내준다.
+def valid(equation):
+    equation = equation.replace('=', '==')
+    return eval(equation)
+
+def solution(equations):
+    return ["O" if valid(equation) else "X" for equation in equations]  
