@@ -42,6 +42,7 @@
     
 #     return False
 
+# 코드수정
 def rotation(a):
     r=len(a)
     c=len(a[0])
@@ -54,8 +55,9 @@ def rotation(a):
     
 def check(k,l,newlock):
     
-    for i in range(len(l)-1,len(l)-1+len(l)):
-        for j in range(len(l)-1,len(l)-1+len(l)):
+    for i in range(len(k)-1,len(k)+len(l)-1):
+        for j in range(len(k)-1,len(k)+len(l)-1):
+            
             if newlock[i][j] !=1:
                 return False
     
@@ -71,23 +73,22 @@ def solution(key, lock):
     newlock=[[0]*(total) for _ in range(total)]
     for i in range(n):
         for j in range(n):
-            newlock[i+n][j+n]=lock[i][j]
+            newlock[i+m-1][j+m-1]=lock[i][j]
+    
     
     for _ in range(4):
         key=rotation(key)
-        for x in range(m+n):
-            for y in range(m+n):
-                for i in range(n):
-                    for j in range(n):
+        for x in range(m+n-1):
+            for y in range(m+n-1):
+                for i in range(m):
+                    for j in range(m):
                         newlock[i+x][j+y]+=key[i][j]
-                if check==True:
+                if check(key,lock,newlock)==True:
                     return True
-                for i in range(n):
-                    for j in range(n):
+                for i in range(m):
+                    for j in range(m):
                         newlock[i+x][j+y]-=key[i][j]
-                            
+                
             
     return False
-key=[[0, 0, 0], [1, 0, 0], [0, 1, 1]]
-lock=[[1, 1, 1], [1, 1, 0], [1, 0, 1]]
-solution(key,lock)
+

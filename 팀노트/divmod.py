@@ -1,4 +1,4 @@
-print(list(divmod(10,8)))#몫,나머지
+print(divmod(10,8))#몫,나머지
 
 print(10/8)
 print(10%8)
