@@ -8,15 +8,15 @@ INF = 1e9
 
 
 
-dist=[3,5,7,4]
+dist=[(3,1),(5,1),(1,7),(1,4)]
 candidates = list(combinations(dist,2))
 a= list(permutations(dist,len(dist)))
-for i in permutations(dist,len(dist)):
+# for i in permutations(dist,len(dist)):
+#     print(i)
+
+# c= math.comb(5,3)
+# p = math.perm(5,3)
+for i in candidates:
     print(i)
 
-c= math.comb(5,3)
-p = math.perm(5,3)
-print(candidates)
-dist.pop()
-
-print(dist)
+print(a)

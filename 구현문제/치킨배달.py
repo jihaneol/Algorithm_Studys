@@ -51,20 +51,30 @@ for r in range(n):
 candidates = list(combinations(chicken,m))
 
 
-def get_sum(candidate):
-    result=0
+# def get_sum(candidate):
+#     result=0
 
-    for x,y in house:#4번
-        temp=int(1e9)
-        for cx,cy in candidate:
-            temp=min(temp,abs(x-cx)+abs(y-cy))
+#     for x,y in house:#4번
+#         temp=int(1e9)
+#         for cx,cy in candidate:
+#             temp=min(temp,abs(x-cx)+abs(y-cy))
             
-        result += temp
+#         result += temp
         
-    return result
+#     return result
 
-result=int(1e9)
-for candidate in candidates:
-    result=min(result,get_sum(candidate))
+# result=int(1e9)
+# for candidate in candidates:
+#     result=min(result,get_sum(candidate))
     
-print(result)
+# print(result)
+answer=1e9
+for candidate in candidates:
+    result=0
+    for x,y in house:
+        temp=1e9
+        for cx,cy in candidate:
+            temp=min(temp,abs(cx-x)  + abs(cy-y))
+        result+=temp
+
+    answer=min(answer,result)
