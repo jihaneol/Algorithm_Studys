@@ -131,7 +131,7 @@ def main():
             if visited[i][j] == cnt:
                 continue
             visited[i][j] = cnt
-            area = set([(i,j)])
+            area = [(i,j)]
             popul = board[i][j]
             q.append((i,j))
             
@@ -145,7 +145,7 @@ def main():
 
                     if l<=abs(board[x][y]-board[dx][dy])<=r:
                         visited[dx][dy] = cnt
-                        area.add((dx,dy))
+                        area.append((dx,dy))
                         popul += board[dx][dy]
                         q.append((dx,dy))
             
@@ -155,6 +155,7 @@ def main():
                 for x,y in area:
                     board[x][y] = avg_popul
                     cand.append((x,y))
+        print(cand)
         if cand:
             cnt += 1
         else:

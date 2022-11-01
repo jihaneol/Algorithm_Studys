@@ -1,30 +1,3 @@
-# 코테 프로그래머스 풀기
-# n = int(input())
-# count = 0
-
-# for i in range(n+1):
-#     for j in range(60):
-#         for d in range (60):
-#             if "3" in str(i) + str(j) + str(d):
-#                 count +=1
-# print(count)
-
-
-
-# a = input()
-# n1= sorted(a)
-# s =[]
-# c =0
-# for i in range(len(n1)):
-#     if n1[i].isalpha :
-#         s.append(n1[i])
-#         n1.pop(n1[i])
-# for i in range(len(s)):
-#     c += int(s[i])
-# n1.append(c)
-
-# print(''.join(n1))
-
 # 덧셈 곱셈 넣어 최댓값 문제
 
 # a = list(input())
@@ -65,6 +38,7 @@
 # dx = [-1,1,0,0]
 # dy = [0,0,-1,1]
 
+#bfs 공식
 # def bfs(x,y):
 #     queue = deque()
 #     queue.append((x,y))
@@ -111,7 +85,7 @@
 # 퀵정렬
 # array = [5,7,9,0,3,1,6,2,4,8]
 
-# def quick_sort(array,start,end):    
+# def quick_sort(array,start,end):  
 #     if start >=end:
 #         return
 #     pivot = start

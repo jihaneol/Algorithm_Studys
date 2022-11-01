@@ -1,7 +1,6 @@
 t=int(input())
-for c in t:
+for c in range(t):
     n=int(input())
-    print(f'#{c}')
     arr=[[1]*i for i in range(1,n+1)]
     for i in range(n):
         for j in range(i+1):

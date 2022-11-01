@@ -3,8 +3,6 @@
 # data=[] #복도정보
 # temp=[] # 선생님 위치 정보
 
-
-
 # for i in range(length):
 #     data.append(list(input().split()))
 #     for j in range(length):
@@ -15,7 +13,6 @@
 # dy=[1,0,-1,0]
 
 # def see_count(dat):
-    
 #     for i,j in temp:
 #         for z in range(4):
 #             nx= dx[z]+i
@@ -121,3 +118,62 @@ if find:
     print('YES')
 else:
     print('NO')
+
+
+#수정
+import sys
+input = sys.stdin.readline
+def check():
+    for i,j in teacher:
+        for z in range(4):
+            nx= dx[z]+i
+            ny= dy[z]+j
+            while nx>=0 and ny>=0 and ny<n and nx<n :
+                if data[nx][ny]=='O':
+                    break
+                if data[nx][ny]=='S': 
+                    return False
+                nx+=dx[z]
+                ny+=dy[z]
+    return True       
+    
+
+n=int(input())
+data=[]
+teacher=[]
+wall=[]
+dx=[0,1,0,-1]
+dy=[1,0,-1,0]
+
+for i in range(n):
+    data.append(list(input().split()))
+    for j in range(n):
+        if data[i][j]=="T":
+            teacher.append((i,j))
+        if data[i][j]=="X":
+            wall.append((i,j))
+
+def solution(cnt):
+    if cnt==3:
+        if check():
+            return True
+        return False
+    else:
+        for i in range(len(wall)):
+            for j in range(i):
+                for z in range(j):
+                    x1,y1=wall[i]
+                    x2,y2=wall[j]
+                    x3,y3=wall[z]
+
+                    data[x1][y1]='O'
+                    data[x2][y2]='O'
+                    data[x3][y3]='O'
+                    if solution(3):
+                        return "YES"
+                    
+                    data[x1][y1]='X'
+                    data[x2][y2]='X'
+                    data[x3][y3]='X'
+        return "NO"
+print(solution(1))

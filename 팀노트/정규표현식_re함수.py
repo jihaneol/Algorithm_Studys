@@ -5,5 +5,5 @@ def solution(my_string):
     A = list(map(int,p.findall(my_string)))
     A.sort()
     return A
-
+print(solution('ksdjflkj215sdfa151'))
 #findall  다 찾기 0-9 에 있는 모든 숫자를   
