@@ -45,3 +45,6 @@ def solution(n, stages):
         
     
     return answer
+
+
+    
