@@ -17,9 +17,12 @@ for _ in range(n):
                 dp[i][j+1]+=max(dp[i][j],dp[i-1][j])
             else:
                 dp[i][j+1]+=max(dp[i][j],dp[i+1][j],dp[i-1][j])
-    print(dp)
+    
     result=0
     for i in range(n):
         result=max(result,dp[i][m-1])
     print(result)    
+
+
+
     
