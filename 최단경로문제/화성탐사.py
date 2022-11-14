@@ -8,32 +8,31 @@ dy=[1,0,-1,0]
 
 for _ in range(int(input())):
     n=int(input())
-    space=[]
-    q=[]
-    heapq(q,(0,0))
-    data=[[INF]*n for _ in range(n)]
+    graph=[]
+
     for i in range(n):
-            space.append(list(map(int,input().split())))
-    
+            graph.append(list(map(int,input().split())))
+    distance=[[INF]*n for _ in range(n)]
     x,y=0,0
-    data[x][y]=space[x][y]
-    q=[(space[x][y],x,y)]
+    q= [(graph[x][y],x,y)]
+    distance[x][y]=graph[x][y]
+    
     while q:
-        c,x,y=heapq.heappop(q)
+        dist,x,y=heapq.heappop(q)
        
-        if data[x][y]<c:
+        if distance[x][y]<dist:
             continue
         for i in range(4):
             nx=dx[i]+x
             ny=dy[i]+y
             if nx<0 or nx >=n or ny >=n or ny<0:
                 continue
-            cost=space[nx][ny]+c
-            if cost<data[nx][ny]:
-                data[nx][ny]=cost
-            heapq.heappush((cost,nx,ny))
-
-print(data[n-1][n-1])
+            cost=graph[nx][ny]+dist
+            if cost<distance[nx][ny]:
+                distance[nx][ny]=cost
+                heapq.heappush(q, (cost,nx,ny))
+print(distance)
+print(distance[n-1][n-1])
         
             
 
