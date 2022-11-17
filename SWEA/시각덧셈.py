@@ -5,14 +5,14 @@ for test_case in range(1, T + 1):
     hour=data[:2]
     min=data[2:]
     result=[]
-    for a in zip(hour,min):
+    for a in zip(hour,min): # result0는 시간 result1는 분 표현
         result.append(sum(a))
     if result[1]>=60:
-        result[0]+=result[1]//60
+        result[0]+=1
         result[1]%=60
-    if result[0]>=13:
-        if result[0]%12==0:
-            result[0]=12
-        else:
-            result[0]%=12
+    
+    if result[0]%12==0:
+        result[0]=12
+    else:
+        result[0]%=12
     print(f'#{test_case} {result[0]} {result[1]}')
