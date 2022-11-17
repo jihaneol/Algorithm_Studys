@@ -1,4 +1,4 @@
-print(bin(2)[2:])
-print(ord('a'))
+print(bin(2)[2:]) #2를 이진수로 변환 0b10 이므로 접두사를 [2:] 로 생략해줌
+print(ord('a')) # ord()는 a를 10진수로 변환 
 a='51515'
-print(list(map(int,a)))
+print(list(map(int,a))) # [5,1,5,1,5]로 변환시켜준다.
