@@ -1,23 +1,4 @@
-# board=[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]
-# dx=[0,1,1,1,0,-1,-1,-1]
-# dy=[1,1,0,-1,-1,arent,b)
-#     if a<b:
-#         parent[b]=a
-#     else:
-#         parent[a]=b
 
-# def solution(n, computers):
-#     parent=[0]*(n+1)
-#     for i in range(1,n+1):
-#         parent[i]=i
-    
-#     for i in range(n):
-#         for j in range(n):
-#             if computers[i][j]==1:
-#                 if f_parent(parent,1+i) != f_parent(parent,1+j):
-#                     u_parent(parent,1+j,1+i)
-#     print(parent)
-#     return len(list(set(parent)))-1
 
 def connect(i,now,direction):
     global answer
