@@ -1,29 +1,25 @@
-T = int(input())
+def dfs(x,cnt):
+    global answer
+    if answer<cnt:
+        answer=cnt
+    for next_node in graph[x]: # 다음 노드들 
+        if not visited[next_node]:
+            visited[next_node]=True
+            dfs(next_node,cnt+1)
+            visited[next_node]=False
 
-for t in range(T):
-    vertex, edge = map(int, input().split())
-    graph = [[] for _ in range(vertex + 1)]
+    return
 
-    for i in range(edge):
-        a, b = map(int, input().split())
+for t in range(1,int(input())+1):
+    n,m=map(int,input().split()) # 노드 간선
+    graph=[[] for _ in range(n+1)] #무방향 그래프 
+    for i in range(m):
+        a,b=map(int,input().split())
         graph[a].append(b)
         graph[b].append(a)
-
-    result = 0
-
-    for i in range(1, vertex + 1):
-        visited = [False] * (vertex + 1)
-
-        def dfs(v, count):
-            global result
-            visited[v] = True
-            result = max(result, count)
-            for x in graph[v]:
-                if not visited[x]:
-                    dfs(x, count+1)
-                    visited[x]=False
-                    
-
-        dfs(i, 1)
-
-    print("#{} {}".format((t+1), result))
+    answer=0
+    for i in range(1,n+1): # 각각 시작 노드 넣어주기
+        visited=[False]*(n+1) #방문 했는지
+        visited[i]=True # 첫노드 방문 시키기
+        dfs(i,1)
+    print(f'#{t} {answer}')
