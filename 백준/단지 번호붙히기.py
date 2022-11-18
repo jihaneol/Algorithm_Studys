@@ -8,10 +8,6 @@ def dfs(x1,y1):
             if board[nx][ny]==1:
                 board[nx][ny]=2
                 dfs(nx,ny)
-
-
-
-
 n=int(input())
 board=[list(map(int,str(input()))) for _ in range(n)]
 
