@@ -5,7 +5,7 @@ for test_case in range(1, T + 1):
     data=int(input())
     a=[2,3,5,7,11]
     c=[0,0,0,0,0]
-    result=dict(zip(a,c))
+    result=dict(zip(a,c)) # 딕셔너리 로 만들어서 풀기.
     print(f'#{test_case}',end=" ")
     for i in a:
         while data%i==0:

@@ -1,4 +1,4 @@
-def change(number):
+def change(number): #코드 해석기
     dic = {
         '0001101': '0',
         '0011001': '1',
@@ -13,7 +13,7 @@ def change(number):
     }
 
     return dic[number]
-def solved():
+def solved(): # 문제 풀이 함수
     odd=0
     even=0
     for i in range(len(result)):
@@ -36,19 +36,20 @@ for test_case in range(1, T + 1):
     check=True
     for i in range(n):
         data.append(list(input()))
+        #찾아는지 않았는지 확인
         if check:
-            a = data[i][::-1]
+            a = data[i][::-1] #거꾸로 확인
             for j in range(m):
-                if a[j]=='1':
-                    while cnt<56:
+                if a[j]=='1': 
+                    while cnt<56: # 56가지 숫자를 얻기
                         answer+=a[j]
                         cnt+=1
                         j+=1
                     check=False
-    answer=answer[::-1]
-    result=''
+    answer=answer[::-1] #뒤집었던 문자 복원
+    result=''#답
     for i in range(8):
-        temp = answer[i*7:(i+1)*7]
+        temp = answer[i*7:(i+1)*7] # 7개씩 8번
         result+= change(temp)
     
     if solved():
