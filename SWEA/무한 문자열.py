@@ -6,6 +6,8 @@ def solution(s,t):
             return True
         else:
             return False
+    if s_length<t_length:
+        s_length,t_length=t_length,s_length
 
     elif s_length>t_length:
         x=s_length-t_length
@@ -18,17 +20,6 @@ def solution(s,t):
                 if s[temp:temp+t_length]!=t:
                     return False
                 temp+=t_length
-    else:
-        x=t_length-s_length
-        if t_length / s_length <= 2:
-            if s!=t[:s_length] or t[x:]!=s:
-                return False
-        else:
-            temp = 0
-            while temp < t_length:
-                if t[temp:temp+s_length] != s:
-                    return False
-                temp += s_length
     return True
 
 T = int(input())
@@ -40,3 +31,31 @@ for test_case in range(1, T + 1):
         print(f'#{test_case} yes')
     else:
         print(f'#{test_case} no')
+        
+n=int(input())
+for t in range(1,n+1):
+    word1,word2=input().split()
+    print(f'#{t}',end=" ")
+    if word1<word2: # 무조건 word1이크게
+        word1,word2=word2,word1
+
+    if word1==word2:
+        print('yes')
+        continue
+    L_1=list(word1)
+    L_2=list(word2)
+    cnt=0
+    check=False
+    while cnt<len(word1):
+        if word1[cnt:len(word2)+cnt]!=word2 and len(word1[cnt:len(word2)+cnt])==len(word2) :
+            check=True
+        elif len(word1[cnt:len(word2)+cnt])!=len(word2):
+            if word1[len(word1)-len(word2):len(word1)]==word2:
+                break
+            else:
+                check=True
+        cnt+=len(word2)
+    if check:
+        print('no')
+    else:
+        print('yes')

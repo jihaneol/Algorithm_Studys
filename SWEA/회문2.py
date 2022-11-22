@@ -1,32 +1,91 @@
-def check(k,data):
-    if k>1:
-        cnt=0
-        while cnt+k<=100:
-            if data[cnt:k+cnt]==data[cnt:k+cnt][::-1]:
-                return True
-            cnt+=1
-    return False
+def H_solution(k): # 가로 확인
+    global answer
+    for i in range(100):  # 행
+        for j in range(101 - k):  # 열
+            if check(arr[i][j:k + j]): #가로확인
+                answer = k
+                return
 
-# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-for test_case in range(10):
-    n=int(input())
-    data=[]
-    answer=0
-    temp=[[] for _ in range(100)]
-    for i in range(100):
-        data.append(list(input()))
-        #가로검사
-        for k in range(100):
-            if check(k,data[i]):
-                answer=max(answer,k)
-    # #세로검사
+def V_solution(k):
+    global answer
+    for i in range(100):  # 행
+        for j in range(101 - k):  # 열
+            word = ""
+            for x in range(k):  # 세로 확인
+                word += arr[x + j][i]
+            if check(word):
+                answer = k
+                return
+def check(data): 회문 검사
+    cnt=0
+    n=len(data)
+    while cnt<n-cnt-1:
+        if data[cnt]!=data[n-1-cnt]:
+            return False
+        cnt+=1
+    return True
+
+
+for T in range(10):
+    n = int(input())
+    arr = [list(input()) for _ in range(100)]
+    answer = 1
+    for k in range(2, 101):  # 회문 길이 세로 확인
+        H_solution(k)
+    for k in range(answer + 1, 101):
+        V_solution(k)
+
+    print(f'#{n} {answer}')
+    
+#더 좋은 코드
+for Test in range(10):
+    start = time.time()  # 시작 시간 저장
+    T = int(input())
+    x = [list(map(str, input())) for _ in range(100)]
+    s = 0 #가로 길이
+    w = 0 # 세로길이
+    cc = 0 #회문길이
     for i in range(100):
         for j in range(100):
-            temp[i].append(data[j][i])
-        for k in range(100):
-            if check(k,temp[i]):
-                answer=max(answer,k)
+            for k in range(j):
+                if x[i][j] == x[i][k]:
+                    cc = 0
+                    for l in range(j):
+                        if x[i][j - l] == x[i][k + l]:
+                            if j - l == k + l:
+                                cc += 1
+                            elif j - l > k + l:
+                                cc += 2
+                            else:
+                                break
+                        else:
+                            cc = 0
+                            break
+                    if s < cc:
+                        s = cc
 
-    
-    print(f'#{n} {answer}')
+    for i in range(100):
+        for j in range(s+1,100):
+            for k in range(j):
+                if x[j][i] == x[k][i]:
+                    cc = 0
+                    for l in range(j):
+                        if x[j - l][i] == x[k + l][i]:
+                            if j - l == k + l:
+                                cc += 1
+                            elif j - l > k + l:
+                                cc += 2
+                            else:
+                                break
+                        else:
+                            cc = 0
+                            break
+                    if w < cc:
+                        w = cc
 
+    if s > w:
+        an = s
+    else:
+        an = w
+
+    print("#{0} {1}".format(T, an))
