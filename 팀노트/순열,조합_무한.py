@@ -14,8 +14,9 @@ a= list(permutations(dist,len(dist)))
 # for i in permutations(dist,len(dist)):
 #     print(i)
 
-# c= math.comb(5,3)
-# p = math.perm(5,3)
+c= math.comb(5,3)
+p = math.perm(5,3)
+print(c,p)
 for i in candidates:
     print(i)
 
